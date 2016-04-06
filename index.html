@@ -5,69 +5,29 @@
     <meta charset="UTF-8">
     <title>Lincy's Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/theme_lincy.min.css" />
-	<link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="css/theme_lincy.min.css" />
+    <link rel="stylesheet" href="css/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <script src="js/localstorage.js"></script>
 
-    <!-- Button click script for hiding/showing the div par. Not a very pretty solution.. -->
+    <!-- Button click script for hiding/showing the extra content, inspired on portfolio tutorial but adjusted to work with more/different buttons -->
     <script>
         $(document).ready(function () {
-            $('#button1').on('click', function () {
-                if ($('#par1').is(':visible')) {
-                    // Text verandert niet meer!! Research doen waarom...
-                    $(this).text('More info');
-                    $('#par1').hide();
-                } else {
-                    $(this).text("Less info");
-                    $('#par1').show();
-                }
-            });
+            $(".toggle_container").hide();
+            $("button.reveal").click(function () {
+                $(this).toggleClass("active").next().slideToggle("fast");
 
-            $('#button2').on('click', function () {
-                if ($('#par2').is(':visible')) {
-                    $(this).text('More info');
-                    $('#par2').hide();
+                if ($.trim($(this).text()) === 'Less Info') {
+                    $(this).text('More Info');
                 } else {
-                    $(this).text("Less info");
-                    $('#par2').show();
+                    $(this).text('Less Info');
                 }
-            });
 
-            $('#button3').on('click', function () {
-                if ($('#par3').is(':visible')) {
-                    $(this).text('More info');
-                    $('#par3').hide();
-                } else {
-                    $(this).text("Less info");
-                    $('#par3').show();
-                }
+                return false;
             });
-
-            $('#button4').on('click', function () {
-                if ($('#par4').is(':visible')) {
-                    $(this).text('More info');
-                    $('#par4').hide();
-                } else {
-                    $(this).text("Less info");
-                    $('#par4').show();
-                }
-            });
-
-            $('#button5').on('click', function () {
-                if ($('#par5').is(':visible')) {
-                    $(this).text('More info');
-                    $('#par5').hide();
-                } else {
-                    $(this).text("Less info");
-                    $('#par5').show();
-                }
-            });
-
-            $('#par1, #par2, #par3, #par4, #par5').hide();
-            $('#button1, #button2, #button3, #button4, #button5').text('More info');
+            $("a[href='" + window.location.hash + "']").parent(".reveal").click();
         });
     </script>
 
@@ -78,7 +38,6 @@
     <!-- Header -->
 
     <div data-role="page" id="home">
-
         <header data-role="header">
             <h1>Lincy's Portfolio</h1>
             <nav data-role="navbar">
@@ -91,7 +50,7 @@
             </nav>
         </header>
 
-        <!-- All the information about the project -->
+        <!-- All the information about the projects -->
 
         <article data-role="content">
             <ul data-role="listview" data-inset="true" data-theme="portfolio">
@@ -104,13 +63,13 @@
                             <p style="white-space: normal !important;">
                                 <!-- normal text goes here -->
                                 Fasten Your Seatbelts is about designing and creating a simple IT-system. With this project students will come in contact with java and processing. They learn how to convert the wishes of a client into clearly defined requirements and build a IT-system that meets these requirements. </p>
-                            <button id="button1">More info</button>
-
-                            <div id="par1">
-                                <p style="white-space: normal !important;">
-                                    This was my first project when I started my study at the HvA. I worked together with 6 other students from Game Development to create a game. At first we had to think of 3 different game concepts, but in the end we chose to elaborate on this one, "Prehistoric Defender". This project was in association with Corendon.
-                                    <!-- text that should be hidden or could be goes here -->
-                            </div>
+                            <button class="reveal">More info </button>
+                            <div class="toggle_container">
+                                <div class="block">
+                                    <p style="white-space: normal !important;">
+                                        This was my first project when I started my study at the HvA. I worked together with 6 other students from Game Development to create a game. At first we had to think of 3 different game concepts, but in the end we chose to elaborate on this one, "Prehistoric Defender". This project was in association with Corendon.
+                                        <!-- text that should be hidden or could be goes here -->
+                                </div>
                         </li>
                     </ul>
                 </li>
@@ -123,13 +82,13 @@
                             <p style="white-space: normal !important;">
                                 <!-- normal text goes here -->
                                 As a propedeuse student from the domain Digitail Media and Creative Industry (DMCI) from the HvA we participated in Student in Motion. The theme was "the new making". We've collaborated with craft entrepreneurs in Amsterdam, to support them with our DMCI-expertise. </p>
-                            <button id="button2">More info</button>
-
-                            <div id="par2">
-                                <p style="white-space: normal !important;">
-                                    This is a yearly organized project that takes places during one week in February. I participated in this project from 02-02-2015 'till 06-02-2015.
-                                    <!-- text that should be hidden or could be goes here -->
-                            </div>
+                            <button class="reveal">More info </button>
+                            <div class="toggle_container">
+                                <div class="block">
+                                    <p style="white-space: normal !important;">
+                                        This is a yearly organized project that takes places during one week in February. I participated in this project from 02-02-2015 'till 06-02-2015.
+                                        <!-- text that should be hidden or could be goes here -->
+                                </div>
                         </li>
                     </ul>
                 </li>
@@ -142,13 +101,13 @@
                             <p style="white-space: normal !important;">
                                 <!-- normal text goes here -->
                                 Project Agile Development is about creating a IT-system with a multidisciplinair team. With this project students will learn to work with the Agile Development method 'Scrum'. Futhermore, they learn how to model a system with the use of the modeling language 'UML'. </p>
-                            <button id="button3">More info</button>
-
-                            <div id="par3">
-                                <p style="white-space: normal !important;">
-                                    <!-- text that should be hidden or could be goes here -->
-                                    In Project Agile Development I worked together with 5 other students from different ICT studies. We build an app (in the form of a single-page website with multiple views) with HTML, AngularJS, CSS and JavaScript. It was in association with the Waag Society. The app is developed for elderly people recovering from a hip procedure, the goal of the app is to stimulate rapid rehabilitation.
-                            </div>
+                            <button class="reveal">More info </button>
+                            <div class="toggle_container">
+                                <div class="block">
+                                    <p style="white-space: normal !important;">
+                                        <!-- text that should be hidden or could be goes here -->
+                                        In Project Agile Development I worked together with 5 other students from different ICT studies. We build an app (in the form of a single-page website with multiple views) with HTML, AngularJS, CSS and JavaScript. It was in association with the Waag Society. The app is developed for elderly people recovering from a hip procedure, the goal of the app is to stimulate rapid rehabilitation.
+                                </div>
                         </li>
                     </ul>
                 </li>
@@ -161,13 +120,13 @@
                             <p style="white-space: normal !important;">
                                 <!-- normal text goes here -->
                                 During Project Game Development students create a game in teams. All kinds of game genres are permitted, as long as it is for use in the entertainment market. In this project students will create several prototypes in a very short time and need to elaborate on one of these. Students learn to make better game design choices by gameplay tests and reports.</p>
-                            <button id="button4">More info</button>
-
-                            <div id="par4">
-                                <p style="white-space: normal !important;">
-                                    <!-- text that should be hidden or could be goes here -->
-                                    In project Game Development I've worked together with 5 Game Development students to create a game. We've participated in 3 gamejams and decided to elaborate 1 of our prototypes into a fully functional game, "Boomerang Boy". We've worked on this project for a half year and developed a very nice indie platformer game in Unity with C#.
-                            </div>
+                            <button class="reveal">More info </button>
+                            <div class="toggle_container">
+                                <div class="block">
+                                    <p style="white-space: normal !important;">
+                                        <!-- text that should be hidden or could be goes here -->
+                                        In project Game Development I've worked together with 5 Game Development students to create a game. We've participated in 3 gamejams and decided to elaborate 1 of our prototypes into a fully functional game, "Boomerang Boy". We've worked on this project for a half year and developed a very nice indie platformer game in Unity with C#.
+                                </div>
                         </li>
                     </ul>
                 </li>
@@ -180,13 +139,13 @@
                             <p style="white-space: normal !important;">
                                 <!-- normal text goes here -->
                                 During Project Mobile Development students develop one or more mobile applications for an extern client. </p>
-                            <button id="button5">More info</button>
-
-                            <div id="par5">
-                                <p style="white-space: normal !important;">
-                                    <!-- text that should be hidden or could be goes here -->
-                                    In project Mobile Development I'm working together with 4 students from different ICT-studies to create an application. This is in association with Microsoft.
-                            </div>
+                            <button class="reveal">More info </button>
+                            <div class="toggle_container">
+                                <div class="block">
+                                    <p style="white-space: normal !important;">
+                                        <!-- text that should be hidden or could be goes here -->
+                                        In project Mobile Development I'm working together with 4 students from different ICT-studies to create an application. This is in association with Microsoft.
+                                </div>
                         </li>
                     </ul>
                 </li>
@@ -200,7 +159,7 @@
         </footer>
 
 
-    </div>
+        </div>
 
 </body>
 
